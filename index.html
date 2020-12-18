@@ -10,19 +10,12 @@
     <div id="reader" width="600px">
     </div>
     <script src="./public/html5-qrcode.min.js"></script>
-    <audio id="audio" > 
-        <source src="https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3" 
-        type="audio/mpeg"> 
-    </audio> 
     <script>
-
-        function play(){ 
-            document.getElementById('audio').play() 
-        } 
         function onScanSuccess(qrMessage) {
             // handle the scanned code as you like
             console.log(`QR matched = ${qrMessage}`);
-            play();
+            window.navigator.vibrate(200);
+
         }
         function onScanFailure(error) {
             // handle scan failure, usually better to ignore and keep scanning
