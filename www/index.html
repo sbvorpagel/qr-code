@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="reader" width="600px">
+    </div>
+    <script src="./html5-qrcode.min.js"></script>
+    <script>
+        function onScanSuccess(qrMessage) {
+            // handle the scanned code as you like
+            console.log(`QR matched = ${qrMessage}`);
+        }
+        function onScanFailure(error) {
+            // handle scan failure, usually better to ignore and keep scanning
+            console.warn(`QR error = ${error}`);
+        }
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 30, qrbox: 250 }, /* verbose= */ true);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+    </script>
+    <style>
+        body {
+            padding-top: 36px;
+        }
+    </style>
+</body>
+</html>
